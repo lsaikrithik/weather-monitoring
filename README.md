@@ -1,4 +1,4 @@
-# Weather Monitoring App
+# Weather Monitoring System
 
 ## Objective
 Develop a real-time data processing system to monitor weather conditions and provide summarized insights using rollups and aggregates. The system utilizes data from the OpenWeatherMap API.
