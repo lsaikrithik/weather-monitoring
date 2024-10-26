@@ -38,11 +38,11 @@ weather-monitoring/
 
 ├── templates/ # HTML templates for the web interface 
 
-│     └── home.html # Main page template 
+│              └── home.html # Main page template 
 
 ├── static/ # Static files (e.g., images) 
 
-|      └── weather.jpg # Background image for the web interface 
+|              └── weather.jpg # Background image for the web interface 
 
 └── .env # Environment variables (API keys, DB URI)
 
