@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Monitoring</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('static/weather.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            color: #333;
+            margin: 20px;
+            background-repeat: no-repeat; 
+            opacity: 0.95; 
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #444;
+            font-weight: bold; 
+            margin-top: 20px; 
+        }
+
+        table {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4BAAC8;
+            color: white;
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        .alert-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 15px;
+        }
+
+        .alert {
+            background-color: #ffefef;
+            padding: 15px;
+            border-left: 6px solid #ff4c4c;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .alert strong {
+            color: #c70000;
+        }
+
+        .mark-inactive {
+            background-color: #ff6666;
+            color: white;
+            padding: 5px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .mark-inactive:hover {
+            background-color: #ff3333;
+        }
+
+        .no-alerts {
+            text-align: center;
+            color: #888;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Daily Weather Summary</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Average Temperature (°C)</th>
+                <th>Max Temperature (°C)</th>
+                <th>Min Temperature (°C)</th>
+                <th>Dominant Weather</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for summary in summaries %}
+            <tr>
+                <td>{{ summary['_id'] }}</td>
+                <td>{{ summary['avg_temp']|default(0)|round(2) }}</td>
+                <td>{{ summary['max_temp']|default(0)|round(2) }}</td>
+                <td>{{ summary['min_temp']|default(0)|round(2) }}</td>
+                <td>{{ summary['dominant_weather']|default('N/A') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Weather Alerts</h2>
+
+    <div class="alert-container">
+        {% if alerts %}
+            {% for alert in alerts %}
+                <div class="alert">
+                    <strong>{{ alert['timestamp'].strftime('%Y-%m-%d %H:%M:%S') }} - {{ alert['city'] }}:</strong> {{ alert['alert'] }}
+                    <a href="/mark_inactive/{{ alert['_id'] }}" class="mark-inactive">Mark as Read</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-alerts">No alerts at this time.</div>
+        {% endif %}
+    </div>
+
+    <footer>
+        Weather Monitoring System
+    </footer>
+
+</body>
+</html>
