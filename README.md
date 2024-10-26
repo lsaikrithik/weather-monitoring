@@ -6,11 +6,10 @@ Develop a real-time data processing system to monitor weather conditions and pro
 ## Table of Contents
 1. [Features](#features)
 2. [Technologies](#technologies)
-3. [Codebase Structure](#codebase-structure)
-4. [Design Choices](#design-choices)
-5. [Dependencies](#dependencies)
-6. [Setup Instructions](#setup-instructions)
-7. [Conclusion](#conclusion)
+3. [Design Choices](#design-choices)
+4. [Dependencies](#dependencies)
+5. [Setup Instructions](#setup-instructions)
+6. [Conclusion](#conclusion)
 
 ## Features
 - Fetch real-time weather data for multiple cities.
@@ -24,27 +23,6 @@ Develop a real-time data processing system to monitor weather conditions and pro
 - **Database:** MongoDB
 - **Weather Data API:** OpenWeatherMap API
 - **Frontend:** HTML/CSS (served via Flask)
-
-## Codebase Structure
-weather-monitoring/ 
-
-│ 
-
-├── app.py # Main application file 
-
-├── config.py # Configuration file for API keys and DB settings 
-
-├── weather.py # Weather data fetching and processing logic 
-
-├── templates/ # HTML templates for the web interface 
-
-│              └── home.html # Main page template 
-
-├── static/ # Static files (e.g., images) 
-
-|              └── weather.jpg # Background image for the web interface 
-
-└── .env # Environment variables (API keys, DB URI)
 
 ## Design Choices
 
