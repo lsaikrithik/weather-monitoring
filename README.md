@@ -27,14 +27,23 @@ Develop a real-time data processing system to monitor weather conditions and pro
 
 ## Codebase Structure
 weather-monitoring/ 
+
 │ 
+
 ├── app.py # Main application file 
+
 ├── config.py # Configuration file for API keys and DB settings 
+
 ├── weather.py # Weather data fetching and processing logic 
+
 ├── templates/ # HTML templates for the web interface 
+
 │     └── home.html # Main page template 
+
 ├── static/ # Static files (e.g., images) 
+
 |      └── weather.jpg # Background image for the web interface 
+
 └── .env # Environment variables (API keys, DB URI)
 
 ## Design Choices
