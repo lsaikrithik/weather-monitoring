@@ -106,9 +106,11 @@ To access the weather data from the OpenWeatherMap API, you'll need to sign up f
 
 4. **Store the Key Securely:**
     -  Add the following line to the `.env` file:
+      
     ```makefile
     API_KEY=your_api_key_here
     ```
+    
     Replace `your_api_key_here` with the actual API key you copied.
 
 With the API key in place, you can now run the Weather Monitoring System and access real-time weather data.
