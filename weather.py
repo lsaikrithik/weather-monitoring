@@ -1,11 +1,8 @@
-#weather.py
-
 import requests
 from datetime import datetime
 from pymongo import MongoClient
 from config import API_KEY, BASE_URL, CITIES, MONGO_URI, DB_NAME, TEMP_THRESHOLD, ALERT_CONSECUTIVE_COUNT
 
-# MongoDB connection setup
 client = MongoClient(MONGO_URI)
 db = client[DB_NAME]
 
@@ -37,8 +34,8 @@ def get_daily_summary(city, date):
         {"$match": {
             "city": city,
             "timestamp": {
-                "$gte": f"{date} 00:00:00",  # Start of the day
-                "$lt": f"{date} 23:59:59"    # End of the day
+                "$gte": f"{date} 00:00:00", 
+                "$lt": f"{date} 23:59:59"   
             }
         }},
         {"$group": {
@@ -53,9 +50,9 @@ def get_daily_summary(city, date):
     if result:
         return {
             "_id": result[0]["_id"],
-            "avg_temp": round(result[0]["avg_temp"], 2),  # Round here
-            "max_temp": round(result[0]["max_temp"], 2),  # Round here
-            "min_temp": round(result[0]["min_temp"], 2),  # Round here
+            "avg_temp": round(result[0]["avg_temp"], 2), 
+            "max_temp": round(result[0]["max_temp"], 2), 
+            "min_temp": round(result[0]["min_temp"], 2),  
             "dominant_weather": result[0]["dominant_weather"]
         }
     
